@@ -78,6 +78,7 @@ void mergesort(int arr[], int left, int right){
         merge(arr, left, mid, right);
 
     }
+
 }
 
 
@@ -90,14 +91,14 @@ int main(){
     for (int i = 0; i < n; i++){
         std::cin >> arr[i];
     }
-    mergesort(arr, 0, n - 1);
-    printf("The sorted array is: \n");
-    printf("[");
-    for (int i = 0; i < n; i++){
-        printf("%d ", arr[i]);
-    }
-    printf("]\n");
 
-    printf("The smallest element in the array is: %d\n", arr[0]);
+    printf("Enter the value of k: ");
+    int k;
+    std::cin >> k;
+
+
+    mergesort(arr, 0, n - 1);
+    
+    printf("The kth smallest element in the array is: %d\n", arr[k - 1]);
     return 0;
 }
