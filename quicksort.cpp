@@ -6,8 +6,9 @@ int partition(int arr[], int left, int right) {
 
     for (int j = left; j < right; j++) {
         if (arr[j] <= pivot) {
-            std::swap(arr[i], arr[j]);
             i++;
+            std::swap(arr[i], arr[j]);
+            
         }
     }
 
@@ -34,22 +35,22 @@ int quickselect(int arr[], int left, int right, int k) {
 }
 
 
-int main() {
-    printf("Enter the number of elements in the array: ");
-    int n;
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter the elements of the array: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
+// int main() {
+//     printf("Enter the number of elements in the array: ");
+//     int n;
+//     scanf("%d", &n);
+//     int arr[n];
+//     printf("Enter the elements of the array: ");
+//     for (int i = 0; i < n; i++) {
+//         scanf("%d", &arr[i]);
+//     }
 
-    printf("Enter the value of k: ");
-    int k;
-    scanf("%d", &k);
+//     printf("Enter the value of k: ");
+//     int k;
+//     scanf("%d", &k);
 
-    // quickselect(arr, 0, n - 1, k);
+//     // quickselect(arr, 0, n - 1, k);
 
-    printf("The kth smallest element in the array is: %d\n", quickselect(arr, 0, n - 1, k-1));
+//     printf("The kth smallest element in the array is: %d\n", quickselect(arr, 0, n - 1, k-1));
 
-}
+// }

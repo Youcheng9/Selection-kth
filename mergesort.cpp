@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include "algorithms.h"
 
 
 // merge pseudocode : merge two halves of an array
@@ -8,6 +10,9 @@
 // copy the elements of the left half into the first temporary array
 // copy the elements of the right half into the second temporary array
 // 
+
+#include <iostream>
+#include "algorithms.h"
 
 void merge(int arr[], int left, int mid, int right){
     int n1 = mid - left + 1;
@@ -51,23 +56,6 @@ void merge(int arr[], int left, int mid, int right){
     }
 }
 
-
-// mergesort pseudocode : divide all the elements into two halves 
-//                      and sort them recursively, then merge the sorted halves
-// get an array of n elemtns
-// get mid, left = 0 and right = n - 1
-// if left < right
-//     mid = (left + right) / 2
-
-//     divide them recursively:
-//     mergesort(arr, left, mid)
-//     mergesort(arr, mid + 1, right)
-
-//    merge them recursively:
-//     merge(arr, left, mid, right)
-// 
-// 
-
 void mergesort(int arr[], int left, int right){
     if (left < right){
         int mid = (right + left) / 2;
@@ -76,29 +64,28 @@ void mergesort(int arr[], int left, int right){
         mergesort(arr, mid + 1, right);
 
         merge(arr, left, mid, right);
-
     }
-
 }
 
 
-int main(){
-    printf("Enter the number of elements in the array: ");
-    int n;
-    std::cin >> n;
-    int arr[n];
-    printf("Enter the elements of the array: ");
-    for (int i = 0; i < n; i++){
-        std::cin >> arr[i];
-    }
 
-    printf("Enter the value of k: ");
-    int k;
-    std::cin >> k;
+// int main(){
+//     printf("Enter the number of elements in the array: ");
+//     int n;
+//     std::cin >> n;
+//     int arr[n];
+//     printf("Enter the elements of the array: ");
+//     for (int i = 0; i < n; i++){
+//         std::cin >> arr[i];
+//     }
+
+//     printf("Enter the value of k: ");
+//     int k;
+//     std::cin >> k;
 
 
-    mergesort(arr, 0, n - 1);
+//     mergesort(arr, 0, n - 1);
     
-    printf("The kth smallest element in the array is: %d\n", arr[k - 1]);
-    return 0;
-}
+//     printf("The kth smallest element in the array is: %d\n", arr[k - 1]);
+//     return 0;
+// }
