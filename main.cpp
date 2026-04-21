@@ -1,3 +1,4 @@
+
 #include <chrono>
 #include <iomanip>
 #include <iostream>
@@ -55,19 +56,32 @@ int main() {
     }
 
 
-    // int res2;
-    int res3;
+    std::vector<int> arr1 = input;
+    std::vector<int> arr2 = input;
+    std::vector<int> arr3 = input;
 
-    // double time2[10];
+    int res1, res2, res3;
+
+    double time1[10];
+    double time2[10];
     double time3[10];
 
     for (int i = 0; i < 10; ++i) {
+        std::vector<int> arr1 = input;
+        auto start1 = std::chrono::high_resolution_clock::now();
+        mergesort(arr1.data(), 0, n - 1);
+        res1 = arr1[k - 1];
+        auto end1 = std::chrono::high_resolution_clock::now();
+
+        time1[i] = std::chrono::duration<double, std::micro>(end1 - start1).count();
+
+
         // for quickselect
-        // std::vector<int> arr2 = input;
-        // auto start2 = std::chrono::high_resolution_clock::now();
-        // res2 = quickselect(arr2.data(), 0, n - 1, k - 1);
-        // auto end2 = std::chrono::high_resolution_clock::now();
-        // time2[i] = std::chrono::duration<double, std::micro>(end2 - start2).count();
+        std::vector<int> arr2 = input;
+        auto start2 = std::chrono::high_resolution_clock::now();
+        res2 = quickselect(arr2.data(), 0, n - 1, k - 1);
+        auto end2 = std::chrono::high_resolution_clock::now();
+        time2[i] = std::chrono::duration<double, std::micro>(end2 - start2).count();
 
         // for quickmm
         std::vector<int> arr3 = input;
@@ -76,16 +90,22 @@ int main() {
         auto end3 = std::chrono::high_resolution_clock::now();
         time3[i] = std::chrono::duration<double, std::micro>(end3 - start3).count();
     }
-    
 
-    // double avgTime2 = avgTime(time2);
+    double avgTime1 = avgTime(time1);
+    double avgTime2 = avgTime(time2);
     double avgTime3 = avgTime(time3);
 
     std::cout << std::fixed << std::setprecision(9);
-    // std::cout << "Quickselect - kth smallest element: " << res2 << "\n";
-    // std::cout << "Average time taken by quickselect:  " << avgTime2 << " microseconds\n";
-    // std::cout << "========================================\n";
+    std::cout << "\nResults:\n";
+    std::cout << "========================================\n";
+    std::cout << "Mergesort - kth smallest element: " << res1 << "\n";
+    std::cout << "Average time taken by mergesort:  " << avgTime1 << " microseconds\n";
+    std::cout << "========================================\n";
+    std::cout << "Quickselect - kth smallest element: " << res2 << "\n";
+    std::cout << "Average time taken by quickselect:  " << avgTime2 << " microseconds\n";
+    std::cout << "========================================\n";
     std::cout << "Quickmm - kth smallest element: " << res3 << "\n";
     std::cout << "Average time taken by quickmm:  " << avgTime3 << " microseconds\n";
+
     return 0;
 }
